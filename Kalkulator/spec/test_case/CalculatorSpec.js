@@ -31,6 +31,6 @@ describe('Calculate', ()=>{
     it('Should correctly divide input if operator is /', ()=>{
         expect(calculate(10, 2, '/')).toEqual(5);
         expect(calculate(100, 10, '/')).toEqual(10);
-        expect(calculate(40, 40, '/')).toEqual(1);
+        expect(calculate(40, 40, '/s')).toEqual(1);
     });
 });
