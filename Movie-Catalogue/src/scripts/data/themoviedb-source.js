@@ -2,6 +2,7 @@ import API_ENDPOINT from '../globals/api-endpoint';
 
 class TheMovieDbSource {
   static async nowPlayingMovies() {
+    console.log(API_ENDPOINT.NOW_PLAYING);
     const response = await fetch(API_ENDPOINT.NOW_PLAYING);
     const responseJson = await response.json();
     return responseJson.results;
