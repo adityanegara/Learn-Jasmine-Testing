@@ -34,9 +34,23 @@ const FavoriteMovieArray = {
     // kecuali film dengan id == id
     favoriteMovies = favoriteMovies.filter((movie) => movie.id !== id);
   },
+
+  searchMovies(query) {
+    return this.getAllMovies()
+      .filter((movie) => {
+        const loweredCaseMovieTitle = (movie.title || '-').toLowerCase();
+        const jammedMovieTitle = loweredCaseMovieTitle.replace(/\s/g, '');
+
+        const loweredCaseQuery = query.toLowerCase();
+        const jammedQuery = loweredCaseQuery.replace(/\s/g, '');
+
+        return jammedMovieTitle.indexOf(jammedQuery) !== -1;
+      });
+  },
 };
 
 describe('Favorite Movie Array Contract Test Implementation', () => {
+  // eslint-disable-next-line no-return-assign
   afterEach(() => favoriteMovies = []);
 
   itActsAsFavoriteMovieModel(FavoriteMovieArray);
